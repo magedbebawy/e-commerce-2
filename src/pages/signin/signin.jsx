@@ -1,7 +1,11 @@
 function SignIn() {
     return(
         <div>
-            Sign In
+            <form >
+                <input type="text" placeholder="Email address"/>
+                <input type="password" placeholder="Password"/>
+                <button>Sign In</button>
+            </form>
         </div>
     )
 }

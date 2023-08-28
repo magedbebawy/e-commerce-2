@@ -10,6 +10,8 @@ import Products from './pages/products/products';
 import Profile from './pages/profile/profile';
 import SignIn from './pages/signin/signin';
 import SignUp from './pages/signup/signup';
+import About from './pages/about/about';
+
 function App() {
   return (
     <div className="App">
@@ -17,14 +19,15 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/" element={<Product />} />
-          <Route path="/" element={<Products />} />
-          <Route path="/" element={<Profile />} />
-          <Route path="/" element={<Order />} />
-          <Route path="/" element={<Orders />} />
-          <Route path="/" element={<SignIn />} />
-          <Route path="/" element={<SignUp />} />
-          <Route path="/" element={<ContactUs />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Router>
     </div>
