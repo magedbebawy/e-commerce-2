@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 function Nav() {
 
     const [ expand, setExpand ] = useState(false);
+    const [ signedIn, setSignedIn ] = useState(false);
 
     useEffect(() => {
         window.addEventListener('resize', () => setExpand(false));
@@ -20,7 +21,11 @@ function Nav() {
                         <li className='links'><a href="/">Home</a></li>
                         <li className='links'><a href="/about">About</a></li>
                         <li className='links'><a href="/contact">Contact</a></li>
-                        <li className='links'><a href="/profile">My Account</a></li>
+                        {
+                            signedIn ? <li className='links'><a href="/profile">My Account</a></li> :
+                            <li className='links'><a href="/signin">SignIn</a></li> 
+                            
+                        }
                     </ul>
                     <div className='cart'>
                         <p className='item' id='count'>0</p>
