@@ -1,3 +1,6 @@
+import './signin.css';
+
+
 function SignIn() {
     return(
         <div>
@@ -6,6 +9,7 @@ function SignIn() {
                 <input type="password" placeholder="Password"/>
                 <button>Sign In</button>
             </form>
+            <a href="#">Forgot password?</a>
         </div>
     )
 }
