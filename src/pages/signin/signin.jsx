@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { signIn, signOut } from '../../redux/actions/signInActions';
 import './signin.css';
 
 
 function SignIn() {
+    const dispatch = useDispatch();
+    const signedIn = useSelector(state => state);
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
-    const [ signedIn, setSignedIn ] = useState(false);
     const navigate = useNavigate();
 
     const handleSignIn = async (e) => {
@@ -23,11 +26,12 @@ function SignIn() {
             const data = await response.json();
 
             if(data.token) {
-                setSignedIn(true);
                 localStorage.setItem('authToken', data.token);
+                dispatch(signIn());
                 navigate('/');
             } else {
                 console.log('Failed to login');
+                dispatch(signOut())
             }
         } catch(error) {
             console.log(error);
