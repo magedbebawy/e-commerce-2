@@ -2,44 +2,50 @@ import './nav.css';
 import { BiSolidCart } from 'react-icons/bi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'; // Import the Link component
 
 function Nav() {
 
+    const signedIn = useSelector(state => state.signedIn);
     const [ expand, setExpand ] = useState(false);
-    const [ signedIn, setSignedIn ] = useState(false);
 
     useEffect(() => {
-        window.addEventListener('resize', () => setExpand(false));
-    }, [])
+        const handleResize = () => setExpand(false);
+        window.addEventListener('resize', handleResize);
+        
+        // Cleanup listener on component unmount
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
-    return(
+    return (
         <div>
             <div className="navbar">
                 <h1>My App</h1>
                 <div className='nav-items'>
                     <ul>
-                        <li className='links'><a href="/">Home</a></li>
-                        <li className='links'><a href="/about">About</a></li>
-                        <li className='links'><a href="/contact">Contact</a></li>
+                        <li className='links'><Link to="/">Home</Link></li>
+                        <li className='links'><Link to="/about">About</Link></li>
+                        <li className='links'><Link to="/contact">Contact</Link></li>
                         {
-                            signedIn ? <li className='links'><a href="/profile">My Account</a></li> :
-                            <li className='links'><a href="/signin">SignIn</a></li> 
-                            
+                            signedIn ? 
+                            <li className='links'><Link to="/profile">My Account</Link></li> :
+                            <li className='links'><Link to="/signin">SignIn</Link></li> 
                         }
                     </ul>
                     <div className='cart'>
                         <p className='item' id='count'>0</p>
-                        <a className='item' id='cart' href="/cart"><BiSolidCart size={45}/></a>
+                        <Link className='item' id='cart' to="/cart"><BiSolidCart size={45}/></Link>
                     </div>
                     <div onClick={() => setExpand(!expand)} className='ham-icon'><GiHamburgerMenu color='white' size={45}/></div>
                 </div>
             </div>
             <div className={expand ? 'show-nav' : 'hide-nav'}>
                 <ul>
-                    <li className='links'><a href="/">Home</a></li>
-                    <li className='links'><a href="/about">About</a></li>
-                    <li className='links'><a href="/contact">Contact</a></li>
-                    <li className='links'><a href="/profile">My Account</a></li>
+                    <li className='links'><Link to="/">Home</Link></li>
+                    <li className='links'><Link to="/about">About</Link></li>
+                    <li className='links'><Link to="/contact">Contact</Link></li>
+                    <li className='links'><Link to="/profile">My Account</Link></li>
                 </ul>
             </div>
             <div className='selling-items'>

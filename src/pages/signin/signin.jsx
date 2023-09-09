@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { signIn, signOut } from '../../redux/actions/signInActions';
 import './signin.css';
 
 
 function SignIn() {
     const dispatch = useDispatch();
-    const signedIn = useSelector(state => state);
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const navigate = useNavigate();
@@ -20,12 +19,13 @@ function SignIn() {
                 headers: {
                     'Content-Type': 'application/json' 
                 },
+                credentials: 'include',
                 body: JSON.stringify({email, password})
             });
 
             const data = await response.json();
 
-            if(data.token) {
+            if(!data.error) {
                 localStorage.setItem('authToken', data.token);
                 dispatch(signIn());
                 navigate('/');
