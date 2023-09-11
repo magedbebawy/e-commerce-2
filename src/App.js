@@ -1,5 +1,7 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
 import Nav from './components/navbar/nav';
 import Home from './pages/home/home';
 import Product from './pages/product/product';
@@ -11,26 +13,35 @@ import Profile from './pages/profile/profile';
 import SignIn from './pages/signin/signin';
 import SignUp from './pages/signup/signup';
 import About from './pages/about/about';
+import { useEffect } from 'react';
+import useValidate from './validate';
 
 function App() {
+  const validate = useValidate();
+  useEffect( () => {
+    validate();
+  }, []);
+
+  const signedIn = useSelector(state => state.signedIn);
+
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product" element={<Product />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/profile" element={signedIn ? <Profile /> : <SignIn/>} />
+          <Route path="/order" element={signedIn ? <Order /> : <SignIn/>} />
+          <Route path="/orders" element={signedIn ? <Orders /> : <SignIn/>} />
+          <Route path="/signin" element={signedIn ? <Home/> : <SignIn />} />
+          <Route path="/signup" element={signedIn ? <Home /> : <SignUp />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<About />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

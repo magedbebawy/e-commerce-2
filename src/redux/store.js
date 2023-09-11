@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
-import signInReducer from './reducers/signInReducer';
+import rootReducer from './combineReducers';
 
 const store = createStore (
-    signInReducer,
+    rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()  // Enables Redux devtools
 )
 
