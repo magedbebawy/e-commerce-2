@@ -1,5 +1,6 @@
 import './App.css';
 import { useNavigate, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import Nav from './components/navbar/nav';
 import Home from './pages/home/home';

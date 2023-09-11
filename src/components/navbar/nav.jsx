@@ -21,7 +21,7 @@ function Nav() {
     return (
         <div>
             <div className="navbar">
-                <h1>My App</h1>
+                <h1>Exodus Retail</h1>
                 <div className='nav-items'>
                     <ul>
                         <li className='links'><Link to="/">Home</Link></li>
