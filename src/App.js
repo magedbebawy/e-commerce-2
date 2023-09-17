@@ -15,6 +15,7 @@ import SignUp from './pages/signup/signup';
 import About from './pages/about/about';
 import { useEffect } from 'react';
 import useValidate from './validate';
+import AddProduct from './pages/addProduct/addProduct';
 
 function App() {
   const validate = useValidate();
@@ -39,6 +40,7 @@ function App() {
           <Route path="/signup" element={signedIn ? <Home /> : <SignUp />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/about" element={<About />} />
+          <Route path='/addproduct' element={<AddProduct />}/>
         </Routes>
       </div>
     </Router>

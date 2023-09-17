@@ -1,0 +1,158 @@
+/* addProduct.css */
+form {
+    width: 80%;
+}
+.product-container {
+    display: flex;
+    justify-content: space-between; /* Spacing between inputs and images divs */
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 20px; /* Gap between wrapped items */
+    background-color: #ecf0f1;
+    border: 1px solid #d4d8d9;
+}
+
+.inputs {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stack elements on top of each other */
+    gap: 10px; /* Space between elements */
+    padding: 15px;
+    border-radius: 8px; /* Rounded corners */
+    background-color: #ecf0f1;
+}
+
+.inputs input, .inputs textarea {
+    display: inline-block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(80, 79, 79);
+}
+
+.images {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* For spacing between images */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.file-upload-wrapper {
+    flex: 1 1 calc(33.333% - 20px); /* Flexbox magic for 3 images in a row */
+    max-width: calc(33.333% - 20px);
+    background-color: #ddd; /* Slightly darker gray background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px; /* You can adjust this */
+    position: relative; /* Establish positioning context */
+    overflow: hidden; /* Ensures that nothing spills outside the box */
+}
+
+.file-upload-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1; /* Put it behind the scene */
+}
+
+.file-upload-label {
+    width: 100%;
+    height: 100%;
+    display: flex; /* Use Flexbox */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    position: absolute; /* Make it float on top */
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Adjustments for perfect centering */
+    cursor: pointer; /* Make it look clickable */
+    background-color: #c2c5c5;
+    border: 1px solid #d4d8d9;
+}
+
+.file-upload-label:hover {
+    background-color: #75797a; 
+    color: #ddd;
+    transition: background-color 0.5s;
+    cursor: pointer;
+}
+
+.selected-image {
+    flex: 1 1 calc(33.333% - 20px); /* Flexbox magic for 3 images in a row */
+    max-width: 100%;
+    background-color: #ddd; /* Slightly darker gray background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px; /* You can adjust this */
+}
+
+.add-product {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.add-product:hover {
+    background-color: #2980b9; /* A slightly darker shade of blue for hover */
+}
+
+/* ... your existing CSS ... */
+
+/* Style for the remove button */
+.file-upload-wrapper .remove-button {
+    position: absolute; /* Position it absolutely within the file-upload-wrapper */
+    top: 5px; /* 5px from the top */
+    right: 5px; /* 5px from the right */
+    background-color: rgba(255, 0, 0, 0.7); /* Semi-transparent red background */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    border-radius: 30%; /* Makes it circular */
+    width: 30px; /* Width of the button */
+    height: 40px; /* Height of the button */
+    line-height: 24px; /* For vertical centering of the X */
+    text-align: center; /* For horizontal centering of the X */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-weight: bold; /* Bold font for the X */
+}
+
+/* Hover state for the remove button for better feedback */
+.file-upload-wrapper .remove-button:hover {
+    background-color: rgba(255, 0, 0, 0.9); /* Slightly darker red on hover */
+}
+
+.error-msg {
+    color: red;
+}
+
+/* Media query for screens narrower than 600px */
+@media (max-width: 600px) {
+    .inputs, .images {
+        flex: 1 1 100%;
+    }
+
+    .selected-image, .file-upload-wrapper {
+        flex: 1 1 calc(50% - 20px); /* Flexbox magic for 3 images in a row */
+        max-width: calc(50% - 20px);
+        background-color: #ddd; /* Slightly darker gray background for contrast */
+        border-radius: 8px; /* Rounded corners */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150px; /* You can adjust this */
+    }
+}
+
+
+
+

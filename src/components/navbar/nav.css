@@ -1,5 +1,6 @@
 .navbar {
-    background-color: #000000;
+    background-color: #34495e;
+    color: #ecf0f1;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
@@ -28,7 +29,7 @@
 }
 
 .navbar a {
-    color: white;
+    color: #f39c12;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -38,7 +39,7 @@
 }
 
 .navbar a:hover {
-    color: #00bcd4;
+    color: white;
 }
 
 .cart {
@@ -79,12 +80,13 @@
     display: flex;
     justify-content: space-around;
     font-size: larger;
-    background-color: orange;
+    background-color: #f39c12;
+    color: #f9f9f9;
     cursor: pointer;
 }
 
 .selling-items p:hover {
-    color: white;
+    color: rgb(5, 4, 4);
 }
 
 .show-nav {
