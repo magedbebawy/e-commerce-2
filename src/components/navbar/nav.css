@@ -1,125 +1,55 @@
-.navbar {
+/* A smooth dark theme for the navbar */
+.navbar-modern {
+    background-color: #2c3e50;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-modern:hover {
     background-color: #34495e;
+}
+.navbar-brand{
+    padding: 5px;
+}
+
+.navbar-modern .navbar-brand,
+.navbar-modern .nav-link,
+.navbar-toggler-icon {
     color: #ecf0f1;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
-.nav-items {
-    display: flex;
-}
-
-.navbar h1 {
-    margin-top: 30px;
-    color: white;
-}
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-}
-
-.navbar li {
-    display: inline-block;
-}
-
-.navbar a {
+.navbar-modern .navbar-brand:hover,
+.navbar-modern .nav-link:hover {
     color: #f39c12;
-    text-decoration: none;
-    transition: color 0.3s;
 }
 
-.links{
-    margin-top: 30px;
+.navbar-modern .navbar-toggler-icon {
+    background-color: #ecf0f1;
 }
 
-.navbar a:hover {
-    color: white;
-}
-
-.cart {
-    position: relative; /* Makes the container a reference for absolutely positioned child elements */
-    width: 50px;    
-    margin-bottom: 20px;
-}
-
-.item {
-    position: absolute; /* Absolute positioning */
-    top: 0; /* Start from the top */
-    left: 0; /* Start from the left */
-    width: 100%; /* Take up the full width of the parent */
-    height: 100%; /* Take up the full height of the parent */
-    display: flex;
-    align-items: center; /* Center content vertically */
-    justify-content: center; /* Center content horizontally */
-}
-
-#cart {
-    z-index: 1; /* By default, items will stack by source order, so item2 will be on top of item1 */
-    top: 16px;
-}
-
-#count {
-    color: rgb(0, 0, 0);
-    z-index: 2; /* This makes item2 stack on top of item1 */
-    left: 3px;
-}
-
-.ham-icon {
-    margin-top: 20px;
-    display: none;
-    cursor: pointer;
-}
-
-.selling-items {
-    display: flex;
-    justify-content: space-around;
-    font-size: larger;
-    background-color: #f39c12;
-    color: #f9f9f9;
-    cursor: pointer;
-}
-
-.selling-items p:hover {
-    color: rgb(5, 4, 4);
-}
-
-.show-nav {
-    background-color: #333;
+/* Styling for the container */
+.container-modern {
+    background-color: #f4f4f4; /* Light gray background for contrast */
     padding: 1rem;
-    display: none;
-    align-items: center;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease;
 }
 
-.hide-nav{
-    display: none;
+.container-modern:hover {
+    background-color: #e4e4e4; /* Slightly darker on hover */
 }
 
-.show-nav ul{
-    list-style-type: none;
+/* Styling for the columns */
+.col-modern {
+    padding: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-.show-nav a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
+.col-modern:hover {
+    background-color: #d4d4d4; /* Slightly darker on hover for the columns */
+    cursor: pointer;
 }
 
-@media screen and (max-width: 600px){
-    .ham-icon {
-        display: block;
-    }
-
-    .navbar li {
-        display: none;
-    }
-
-    .show-nav {
-        display: block;
-    }
+.col-modern p {
+    margin: 0; /* Removes default spacing */
 }

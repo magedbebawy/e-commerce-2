@@ -1,14 +1,12 @@
-import './nav.css';
 import { BiSolidCart } from 'react-icons/bi';
-import { GiHamburgerMenu } from 'react-icons/gi';
+import './nav.css';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'; // Import the Link component
+import { Link } from 'react-router-dom';
 
 function Nav() {
-
     const signedIn = useSelector(state => state.signedIn);
-    const [ expand, setExpand ] = useState(false);
+    const [expand, setExpand] = useState(false);
 
     useEffect(() => {
         const handleResize = () => setExpand(false);
@@ -20,40 +18,54 @@ function Nav() {
 
     return (
         <div>
-            <div className="navbar">
-                <h1>Exodus Retail</h1>
-                <div className='nav-items'>
-                    <ul>
-                        <li className='links'><Link to="/">Home</Link></li>
-                        <li className='links'><Link to="/about">About</Link></li>
-                        <li className='links'><Link to="/contact">Contact</Link></li>
+            <nav className="navbar navbar-expand-lg navbar-modern">
+                <Link className="navbar-brand" to="/">Exodus Retail</Link>
+                
+                <button className="navbar-toggler" type="button" onClick={() => setExpand(!expand)}>
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                
+                <div className={`collapse navbar-collapse ${expand ? 'show' : ''}`}>
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/about">About</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/contact">Contact</Link>
+                        </li>
                         {
-                            signedIn ? 
-                            <li className='links'><Link to="/profile">My Account</Link></li> :
-                            <li className='links'><Link to="/signin">SignIn</Link></li> 
+                            signedIn ?
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/profile">My Account</Link>
+                            </li> :
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/signin">SignIn</Link>
+                            </li>
                         }
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/cart">
+                                <BiSolidCart size={30} className="mr-2" /> (0)
+                            </Link>
+                        </li>
                     </ul>
-                    <div className='cart'>
-                        <p className='item' id='count'>0</p>
-                        <Link className='item' id='cart' to="/cart"><BiSolidCart size={45}/></Link>
-                    </div>
-                    <div onClick={() => setExpand(!expand)} className='ham-icon'><GiHamburgerMenu color='white' size={45}/></div>
                 </div>
-            </div>
-            <div className={expand ? 'show-nav' : 'hide-nav'}>
-                <ul>
-                    <li className='links'><Link to="/">Home</Link></li>
-                    <li className='links'><Link to="/about">About</Link></li>
-                    <li className='links'><Link to="/contact">Contact</Link></li>
-                    <li className='links'><Link to="/profile">My Account</Link></li>
-                </ul>
-            </div>
-            <div className='selling-items'>
-                <p>Best Selling items</p>
-                <p>New items</p>
+            </nav>
+
+            <div className="container mt-4 container-modern">
+                <div className="row">
+                    <div className="col-6 col-modern">
+                        <p>Best Selling items</p>
+                    </div>
+                    <div className="col-6 col-modern">
+                        <p>New items</p>
+                    </div>
+                </div>
             </div>
         </div>
     );
-};
+}
 
 export default Nav;
