@@ -3,19 +3,19 @@ import { useNavigate, BrowserRouter as Router, Routes, Route } from 'react-route
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import Nav from './components/navbar/nav';
-import Home from './pages/home/home';
-import Product from './pages/product/product';
-import ContactUs from './pages/contact-us/contactus';
-import Order from './pages/order/order';
-import Orders from './pages/orders/orders';
-import Products from './pages/products/products';
-import Profile from './pages/profile/profile';
-import SignIn from './pages/signin/signin';
-import SignUp from './pages/signup/signup';
-import About from './pages/about/about';
+import Home from './components/home/home';
+import Product from './components/product/product';
+import ContactUs from './components/contact-us/contactus';
+import Order from './components/order/order';
+import Orders from './components/orders/orders';
+import Products from './components/products/products';
+import Profile from './components/profile/profile';
+import SignIn from './components/signin/signin';
+import SignUp from './components/signup/signup';
+import About from './components/about/about';
 import { useEffect } from 'react';
 import useValidate from './validate';
-import AddProduct from './pages/addProduct/addProduct';
+import AddProduct from './components/addProduct/addProduct';
 
 function App() {
   const validate = useValidate();
