@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { signIn, signOut } from "./redux/actions/signInActions";
+import { setUser, setAdmin } from "./redux/actions/setUserActions";
 
 function useValidate() {
 
@@ -18,9 +19,10 @@ function useValidate() {
     
         const data = await response.json();
         if(data.isValid) {
-        dispatch(signIn());
+            dispatch(signIn());
+            data.role === 'admin' ? dispatch(setAdmin()) : dispatch(setUser());
         } else {
-        dispatch(signOut());
+            dispatch(signOut());
         }
     }
 

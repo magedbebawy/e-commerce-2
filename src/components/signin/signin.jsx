@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signIn, signOut } from '../../redux/actions/signInActions';
+import { setUser, setAdmin } from '../../redux/actions/setUserActions';
 import { ToastContainer, toast } from 'react-toastify';
 import './signin.css';
 
@@ -37,6 +38,7 @@ function SignIn() {
             if(!data.error) {
                 localStorage.setItem('authToken', data.token);
                 dispatch(signIn());
+                data.userType === 'admin' ? dispatch(setAdmin()) : dispatch(setUser());
                 navigate('/');
             } else {
                 console.log('Failed to login');
