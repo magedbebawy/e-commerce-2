@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Nav() {
     const signedIn = useSelector(state => state.signedIn);
+    const userType = useSelector(state => state.userType)
     const [expand, setExpand] = useState(false);
 
     useEffect(() => {
@@ -44,6 +45,12 @@ function Nav() {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/signin">SignIn</Link>
                             </li>
+                        }
+                        {
+                            userType === 'admin' ?
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/addproduct">Add product</Link>
+                            </li> : ''
                         }
                         <li className="nav-item">
                             <Link className="nav-link" to="/cart">
